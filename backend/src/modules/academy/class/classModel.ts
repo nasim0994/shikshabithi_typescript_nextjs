@@ -1,5 +1,6 @@
 import { model, Schema } from 'mongoose';
 import { IClass } from './classInterface';
+import { Subject } from '../subject/subjectModel';
 
 const classSchema = new Schema<IClass>(
   {
@@ -31,7 +32,7 @@ const classSchema = new Schema<IClass>(
 
 classSchema.pre('findOneAndDelete', async function (next) {
   const id = this.getQuery()._id;
-  const subjectCount = await Class.countDocuments({ class: id });
+  const subjectCount = await Subject.countDocuments({ class: id });
 
   if (subjectCount > 0) {
     const error = new Error(

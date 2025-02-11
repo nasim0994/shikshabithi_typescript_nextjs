@@ -6,6 +6,8 @@ import { adminRoute } from '../modules/admin/adminRoute';
 import { categoryRoute } from '../modules/academy/category/categoryRoute';
 import { classRoute } from '../modules/academy/class/classRoute';
 import { subjectRoute } from '../modules/academy/subject/subjectRoute';
+import { chapterRoute } from '../modules/academy/chapter/chapterRoute';
+import { contentRoute } from '../modules/academy/content/contentRoute';
 
 const moduleRoutes = [
   {
@@ -31,6 +33,14 @@ const moduleRoutes = [
   {
     path: '/academy/subject',
     route: subjectRoute,
+  },
+  {
+    path: '/academy/chapter',
+    route: chapterRoute,
+  },
+  {
+    path: '/academy/content',
+    route: contentRoute,
   },
 ];
 

@@ -1,8 +1,8 @@
 import { model, Schema } from 'mongoose';
-import { ISubject } from './subjectInterface';
-import { Chapter } from '../chapter/chapterModel';
+import { IChapter } from './chapterInterface';
+import { Content } from '../content/contentModel';
 
-const subjectSchema = new Schema<ISubject>(
+const chapterSchema = new Schema<IChapter>(
   {
     uuid: {
       type: Number,
@@ -29,19 +29,24 @@ const subjectSchema = new Schema<ISubject>(
       ref: 'Class',
       required: true,
     },
+    subject: {
+      type: Schema.Types.ObjectId,
+      ref: 'Subject',
+      required: true,
+    },
   },
   {
     timestamps: true,
   },
 );
 
-subjectSchema.pre('findOneAndDelete', async function (next) {
+chapterSchema.pre('findOneAndDelete', async function (next) {
   const id = this.getQuery()._id;
-  const chapterCount = await Chapter.countDocuments({ subject: id });
+  const contentCount = await Content.countDocuments({ chapter: id });
 
-  if (chapterCount > 0) {
+  if (contentCount > 0) {
     const error = new Error(
-      'Cannot delete this subject with associated chapter articles.',
+      'Cannot delete this chapter with associated content articles.',
     );
     return next(error);
   }
@@ -49,4 +54,4 @@ subjectSchema.pre('findOneAndDelete', async function (next) {
   next();
 });
 
-export const Subject = model<ISubject>('Subject', subjectSchema);
+export const Chapter = model<IChapter>('Chapter', chapterSchema);
