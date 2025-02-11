@@ -8,6 +8,8 @@ import { classRoute } from '../modules/academy/class/classRoute';
 import { subjectRoute } from '../modules/academy/subject/subjectRoute';
 import { chapterRoute } from '../modules/academy/chapter/chapterRoute';
 import { contentRoute } from '../modules/academy/content/contentRoute';
+import { universityRoute } from '../modules/admission/university/universityRoute';
+import { questionSetRoute } from '../modules/admission/questionSet/questionSetRoute';
 
 const moduleRoutes = [
   {
@@ -41,6 +43,14 @@ const moduleRoutes = [
   {
     path: '/academy/content',
     route: contentRoute,
+  },
+  {
+    path: '/admission/university',
+    route: universityRoute,
+  },
+  {
+    path: '/admission/question-set',
+    route: questionSetRoute,
   },
 ];
 
