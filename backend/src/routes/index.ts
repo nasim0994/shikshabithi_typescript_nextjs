@@ -14,6 +14,7 @@ import { admissionMCQRoute } from '../modules/admission/admissionMCQ/admissionMC
 import { instituteRoute } from '../modules/job/institute/instituteRoute';
 import { jobQuestionSetRoute } from '../modules/job/questionSet/questionSetRoute';
 import { jobMCQRoute } from '../modules/job/jobMCQ/jobMCQRoute';
+import { mcqRoute } from '../modules/mcq/mcqRoute';
 
 const moduleRoutes = [
   {
@@ -71,6 +72,10 @@ const moduleRoutes = [
   {
     path: '/job/mcq',
     route: jobMCQRoute,
+  },
+  {
+    path: '/mcq',
+    route: mcqRoute,
   },
 ];
 

@@ -1,5 +1,6 @@
 import { model, Schema } from 'mongoose';
 import { IJobQuestionSet } from './questionSetInterface';
+import { JobMCQ } from '../jobMCQ/jobMCQModel';
 
 const jobQuestionSetSchema = new Schema<IJobQuestionSet>(
   {
@@ -29,19 +30,19 @@ const jobQuestionSetSchema = new Schema<IJobQuestionSet>(
   },
 );
 
-// instituteQuestionSetSchema.pre('findOneAndDelete', async function (next) {
-//   const id = this.getQuery()._id;
-//   const mcqCount = await AdmissionMCQ.countDocuments({ questionSet: id });
+jobQuestionSetSchema.pre('findOneAndDelete', async function (next) {
+  const id = this.getQuery()._id;
+  const mcqCount = await JobMCQ.countDocuments({ questionSet: id });
 
-//   if (mcqCount > 0) {
-//     const error = new Error(
-//       'Cannot delete this set with associated question mcq articles.',
-//     );
-//     return next(error);
-//   }
+  if (mcqCount > 0) {
+    const error = new Error(
+      'Cannot delete this set with associated question mcq articles.',
+    );
+    return next(error);
+  }
 
-//   next();
-// });
+  next();
+});
 
 export const JobQuestionSet = model<IJobQuestionSet>(
   'JobQuestionSet',
