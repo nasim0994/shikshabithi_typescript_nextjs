@@ -10,6 +10,7 @@ import { chapterRoute } from '../modules/academy/chapter/chapterRoute';
 import { contentRoute } from '../modules/academy/content/contentRoute';
 import { universityRoute } from '../modules/admission/university/universityRoute';
 import { questionSetRoute } from '../modules/admission/questionSet/questionSetRoute';
+import { admissionMCQRoute } from '../modules/admission/admissionMCQ/admissionMCQRoute';
 
 const moduleRoutes = [
   {
@@ -51,6 +52,10 @@ const moduleRoutes = [
   {
     path: '/admission/question-set',
     route: questionSetRoute,
+  },
+  {
+    path: '/admission/mcq',
+    route: admissionMCQRoute,
   },
 ];
 
