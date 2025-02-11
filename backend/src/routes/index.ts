@@ -11,6 +11,9 @@ import { contentRoute } from '../modules/academy/content/contentRoute';
 import { universityRoute } from '../modules/admission/university/universityRoute';
 import { questionSetRoute } from '../modules/admission/questionSet/questionSetRoute';
 import { admissionMCQRoute } from '../modules/admission/admissionMCQ/admissionMCQRoute';
+import { instituteRoute } from '../modules/job/institute/instituteRoute';
+import { jobQuestionSetRoute } from '../modules/job/questionSet/questionSetRoute';
+import { jobMCQRoute } from '../modules/job/jobMCQ/jobMCQRoute';
 
 const moduleRoutes = [
   {
@@ -56,6 +59,18 @@ const moduleRoutes = [
   {
     path: '/admission/mcq',
     route: admissionMCQRoute,
+  },
+  {
+    path: '/job/institute',
+    route: instituteRoute,
+  },
+  {
+    path: '/job/question-set',
+    route: jobQuestionSetRoute,
+  },
+  {
+    path: '/job/mcq',
+    route: jobMCQRoute,
   },
 ];
 
